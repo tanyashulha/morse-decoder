@@ -37,10 +37,24 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-function decode(expr) {
-    // write your solution here
+function decode(expr)  {
+    let total = '';
+    let i;
+    let letter;
+    for(i = 0; i < expr.length; i += 10) {
+      letter = expr.slice(i, i+10);
+
+      (letter === '**********') ? total += ' ':
+        total += MORSE_TABLE[letter.replace(/11/g, '-').replace(/10/g, '.').replace(/0/g, '')];
+    }
+    return total;
 }
+
+
+
+
+
 
 module.exports = {
     decode
-}
+};
